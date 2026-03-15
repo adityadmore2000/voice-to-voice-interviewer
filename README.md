@@ -35,6 +35,7 @@ Professional lightweight offline interviewer pipeline built in Python:
 ## 📁 Key files
 
 - `interviewer.py` - main CLI
+- `web_ui.py` - Streamlit UI (resume PDF upload + JD field extraction)
 - `requirements.txt` - dependencies
 - `README.md` - this file
 
@@ -45,11 +46,23 @@ Professional lightweight offline interviewer pipeline built in Python:
 pip install -r requirements.txt
 ```
 
-2. Prepare inputs:
+2. Run UI:
+```bash
+streamlit run web_ui.py
+```
+
+UI includes:
+- Resume PDF upload + text parsing
+- Editable parsed resume text
+- JD text input
+- Extracted JD table: company, role, location
+- Separate extracted job description section
+
+3. Prepare inputs:
 - Job description: plain text file or string
 - Resume: plain text file or string
 
-3. Run interviewer:
+4. Run interviewer:
 ```bash
 python interviewer.py \
   --job-description path/to/jd.txt \
@@ -59,7 +72,7 @@ python interviewer.py \
   --output transcript.txt
 ```
 
-4. Optional: text-only mode (no voice I/O):
+5. Optional: text-only mode (no voice I/O):
 ```bash
 python interviewer.py --no-voice --job-description ... --resume ... --model ...
 ```
